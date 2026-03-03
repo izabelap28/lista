@@ -1,61 +1,92 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* Paleta de cores neutras */
+:root {
+    --bg-color: #fcfaf7;
+    --card-bg: #ffffff;
+    --primary-beige: #e5dfd3;
+    --dark-beige: #c5bba8;
+    --text-main: #5a554e;
+    --accent: #a89f91;
+}
 
-  let convidados = ["Ana","Carlos","Amanda","Bruno","Aline","Fernanda","Rafael","Alex"];
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
 
-  const lista = document.getElementById("lista");
-  const select = document.getElementById("opcao");
-  const botao = document.getElementById("executar");
+.card {
+    background: var(--card-bg);
+    width: 90%;
+    max-width: 450px;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid var(--primary-beige);
+}
 
-  function render(listaFinal){
-    lista.innerHTML = "";
-    listaFinal.forEach(nome => {
-      let li = document.createElement("li");
-      li.textContent = nome;
-      lista.appendChild(li);
-    });
-  }
+header h1 {
+    font-weight: 300;
+    margin-bottom: 5px;
+    color: var(--accent);
+}
 
-  botao.addEventListener("click", () => {
+header p {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
 
-    let opcao = select.value;
-    let copia = [...convidados];
+.menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 20px;
+}
 
-    switch(opcao){
+button {
+    background: var(--bg-color);
+    border: 1px solid var(--primary-beige);
+    padding: 8px;
+    border-radius: 5px;
+    color: var(--text-main);
+    cursor: pointer;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+}
 
-      case "maiusculo":
-        render(copia.map(n => n.toUpperCase()));
-        break;
+button:hover {
+    background: var(--primary-beige);
+}
 
-      case "minusculo":
-        render(copia.map(n => n.toLowerCase()));
-        break;
+.stats {
+    background: var(--bg-color);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    border-left: 3px solid var(--dark-beige);
+}
 
-      case "az":
-        render(copia.sort());
-        break;
+.guest-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-      case "za":
-        render(copia.sort().reverse());
-        break;
+.guest-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0eee9;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+}
 
-      case "letras":
-        render(copia.map(n => n + " (" + n.length + " letras)"));
-        break;
-
-      case "longos":
-        render(copia.filter(n => n.length > 5));
-        break;
-
-      case "comA":
-        render(copia.filter(n => n[0].toUpperCase() === "A"));
-        break;
-
-      default:
-        render(copia);
-    }
-
-  });
-
-  render(convidados);
-
-});
+.guest-list li:last-child {
+    border-bottom: none;
+}
