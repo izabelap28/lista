@@ -1,35 +1,27 @@
-document.addEventListener("DOMContentLoaded", function () {
+// scripts funcionais — não depende de elementos inline
+document.addEventListener('DOMContentLoaded', () => {
+  const convidados = ["Ana","Carlos","Amanda","Bruno","Aline","Fernanda","Rafael","Alex"];
+  const resultado = document.getElementById('resultado');
 
-    let convidados = ["Ana", "Carlos", "Amanda", "Bruno", "Aline", "Fernanda", "Rafael", "Alex"];
+  document.getElementById('btnMaiusculo').addEventListener('click', () => {
+    const linhas = convidados.map(n => n.toUpperCase()).join('<br>');
+    resultado.innerHTML = `<strong>Nomes em MAIÚSCULO:</strong><br>${linhas}`;
+  });
 
-    let resultado = document.getElementById("resultado");
+  document.getElementById('btnA').addEventListener('click', () => {
+    // conta A ou a (case-insensitive) no começo do nome
+    const contador = convidados.reduce((acc, nome) => {
+      return acc + (nome.trim().charAt(0).toUpperCase() === 'A' ? 1 : 0);
+    }, 0);
+    resultado.textContent = `Quantidade que começam com "A": ${contador}`;
+  });
 
-    document.getElementById("btnMaiusculo").addEventListener("click", function () {
-        let texto = "";
-        for (let i = 0; i < convidados.length; i++) {
-            texto += convidados[i].toUpperCase() + "<br>";
-        }
-        resultado.innerHTML = "<strong>Nomes em Maiúsculo:</strong><br>" + texto;
-    });
-
-    document.getElementById("btnA").addEventListener("click", function () {
-        let contador = 0;
-        for (let i = 0; i < convidados.length; i++) {
-            if (convidados[i].startsWith("A")) {
-                contador++;
-            }
-        }
-        resultado.innerHTML = "<strong>Quantidade que começam com A:</strong> " + contador;
-    });
-
-    document.getElementById("btnLongos").addEventListener("click", function () {
-        let lista = [];
-        for (let i = 0; i < convidados.length; i++) {
-            if (convidados[i].length > 5) {
-                lista.push(convidados[i]);
-            }
-        }
-        resultado.innerHTML = "<strong>Nomes com mais de 5 letras:</strong><br>" + lista.join("<br>");
-    });
-
+  document.getElementById('btnLongos').addEventListener('click', () => {
+    const lista = convidados.filter(n => n.length > 5);
+    if (lista.length === 0) {
+      resultado.textContent = 'Nenhum nome com mais de 5 letras.';
+      return;
+    }
+    resultado.innerHTML = `<strong>Nomes com mais de 5 letras:</strong><br>${lista.join('<br>')}`;
+  });
 });
