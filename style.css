@@ -23,8 +23,8 @@ h1 {
 button {
     background-color: #e8cfc1;
     border: none;
-    padding: 10px 15px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 12px;
     cursor: pointer;
     margin-top: 10px;
     width: 100%;
@@ -36,7 +36,7 @@ button:hover {
 }
 
 .resultado {
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 14px;
     color: #5d4037;
 }
