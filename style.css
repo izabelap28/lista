@@ -1,11 +1,12 @@
-/* Paleta de cores neutras */
+/* Paleta de cores neutras atualizada */
 :root {
-    --bg-color: #fcfaf7;
-    --card-bg: #ffffff;
-    --primary-beige: #e5dfd3;
-    --dark-beige: #c5bba8;
-    --text-main: #5a554e;
-    --accent: #a89f91;
+    --bg-color: #f4efe6;      /* Fundo principal */
+    --card-bg: #e9dfcc;       /* Container (card principal) */
+    --inner-card: #efe6d6;    /* Cards internos / lista */
+    --btn-color: #d8ccb6;     /* Botões */
+    --btn-hover: #cbbda5;     /* Hover dos botões */
+    --text-main: #3b372f;     /* Texto principal */
+    --border-soft: #dcd2c0;   /* Cor de borda suave para separação */
 }
 
 body {
@@ -25,64 +26,73 @@ body {
     max-width: 450px;
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border: 1px solid var(--primary-beige);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid var(--border-soft);
 }
 
 header h1 {
     font-weight: 300;
     margin-bottom: 5px;
-    color: var(--accent);
+    color: var(--text-main);
+    letter-spacing: -0.5px;
 }
 
 header p {
     font-size: 0.85rem;
     margin-bottom: 20px;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .menu {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 button {
-    background: #d8ccb6;
-    border: 1px solid var(--primary-beige);
-    padding: 8px;
-    border-radius: 5px;
+    background: var(--btn-color);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 10px;
+    border-radius: 6px;
     color: var(--text-main);
     cursor: pointer;
     font-size: 0.75rem;
-    letter-spacing: 1px;
-    transition: all 0.2s;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease, transform 0.1s;
 }
 
 button:hover {
-    background: var(--primary-beige);
+    background: var(--btn-hover);
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 .stats {
-    background: var(--bg-color);
-    padding: 12px;
+    background: var(--inner-card);
+    padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
     font-size: 0.85rem;
-    border-left: 3px solid var(--dark-beige);
+    border-left: 4px solid var(--btn-hover);
 }
 
 .guest-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    background: var(--inner-card);
+    border-radius: 8px;
+    padding: 10px 15px;
 }
 
 .guest-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid #f0eee9;
-    font-size: 0.95rem;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.9rem;
     display: flex;
     justify-content: space-between;
 }
