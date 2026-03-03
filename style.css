@@ -1,78 +1,67 @@
-/* Paleta: bege neutro somente */
 :root{
-  --bg: #f5f1e6;       /* fundo da página */
-  --card: #efe6d0;     /* cartão/container */
-  --btn: #d9cdb3;      /* botão normal */
-  --btn-hover: #cbbf9e;/* botão hover */
-  --text: #3e3a36;     /* texto */
-  --muted: #6b635d;    /* texto secundário */
-  --radius: 12px;
+  --bg: #f4efe6;
+  --card: #e9dfcc;
+  --btn: #d6c8b2;
+  --btn-hover: #cbbca4;
+  --text: #3e3a36;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
+
 body{
   background:var(--bg);
-  color:var(--text);
-  font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family:Arial, sans-serif;
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:24px;
+  align-items:center;
+  height:100vh;
 }
 
 .container{
-  width:100%;
-  max-width:460px;
   background:var(--card);
-  border-radius:20px;
-  padding:28px;
-  box-shadow:0 8px 20px rgba(60,52,48,0.06);
+  padding:25px;
+  border-radius:18px;
+  width:450px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.05);
   text-align:center;
 }
 
 h1{
-  font-size:20px;
-  margin-bottom:18px;
+  margin-bottom:15px;
   color:var(--text);
+}
+
+input{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  margin-bottom:10px;
 }
 
 .buttons{
   display:grid;
-  gap:10px;
-  margin-bottom:18px;
+  gap:8px;
 }
 
 button{
   background:var(--btn);
-  border: none;
-  padding:12px 14px;
-  border-radius:var(--radius);
+  border:none;
+  padding:10px;
+  border-radius:12px;
   cursor:pointer;
-  font-weight:600;
+  font-weight:bold;
   color:var(--text);
-  transition:transform .08s ease, background .12s ease;
-  width:100%;
-  box-shadow: 0 3px 8px rgba(60,52,48,0.04);
 }
 
-button:active{transform:translateY(1px)}
-button:hover{background:var(--btn-hover)}
+button:hover{
+  background:var(--btn-hover);
+}
 
 .resultado{
+  margin-top:15px;
   text-align:left;
-  background:transparent;
-  border-radius:10px;
-  padding-top:6px;
-  color:var(--muted);
   font-size:14px;
-  line-height:1.5;
-  min-height:48px;
-  word-wrap:break-word;
-}
-
-/* responsivo */
-@media (max-width:420px){
-  .container{padding:18px}
-  h1{font-size:18px}
+  color:var(--text);
+  min-height:40px;
 }
