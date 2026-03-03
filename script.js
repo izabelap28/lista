@@ -1,27 +1,54 @@
-// scripts funcionais — não depende de elementos inline
-document.addEventListener('DOMContentLoaded', () => {
-  const convidados = ["Ana","Carlos","Amanda","Bruno","Aline","Fernanda","Rafael","Alex"];
-  const resultado = document.getElementById('resultado');
+document.addEventListener("DOMContentLoaded", () => {
 
-  document.getElementById('btnMaiusculo').addEventListener('click', () => {
-    const linhas = convidados.map(n => n.toUpperCase()).join('<br>');
-    resultado.innerHTML = `<strong>Nomes em MAIÚSCULO:</strong><br>${linhas}`;
-  });
+  let convidados = ["Ana","Carlos","Amanda","Bruno","Aline","Fernanda","Rafael","Alex"];
+  const resultado = document.getElementById("resultado");
+  const input = document.getElementById("novoNome");
 
-  document.getElementById('btnA').addEventListener('click', () => {
-    // conta A ou a (case-insensitive) no começo do nome
-    const contador = convidados.reduce((acc, nome) => {
-      return acc + (nome.trim().charAt(0).toUpperCase() === 'A' ? 1 : 0);
-    }, 0);
-    resultado.textContent = `Quantidade que começam com "A": ${contador}`;
-  });
+  function atualizarLista() {
+    resultado.innerHTML = "<strong>Lista Atual:</strong><br>" + convidados.join("<br>");
+  }
 
-  document.getElementById('btnLongos').addEventListener('click', () => {
-    const lista = convidados.filter(n => n.length > 5);
-    if (lista.length === 0) {
-      resultado.textContent = 'Nenhum nome com mais de 5 letras.';
-      return;
+  document.getElementById("btnAdicionar").addEventListener("click", () => {
+    let nome = input.value.trim();
+    if(nome !== ""){
+      convidados.push(nome);
+      atualizarLista();
+      input.value = "";
     }
-    resultado.innerHTML = `<strong>Nomes com mais de 5 letras:</strong><br>${lista.join('<br>')}`;
   });
+
+  document.getElementById("btnRemover").addEventListener("click", () => {
+    let nome = input.value.trim();
+    convidados = convidados.filter(n => n.toLowerCase() !== nome.toLowerCase());
+    atualizarLista();
+    input.value = "";
+  });
+
+  document.getElementById("btnMaiusculo").addEventListener("click", () => {
+    resultado.innerHTML = convidados.map(n => n.toUpperCase()).join("<br>");
+  });
+
+  document.getElementById("btnA").addEventListener("click", () => {
+    let contador = convidados.filter(n => n[0].toUpperCase() === "A").length;
+    resultado.textContent = "Quantidade com A: " + contador;
+  });
+
+  document.getElementById("btnLongos").addEventListener("click", () => {
+    let lista = convidados.filter(n => n.length > 5);
+    resultado.innerHTML = lista.join("<br>");
+  });
+
+  document.getElementById("btnOrdenar").addEventListener("click", () => {
+    convidados.sort();
+    atualizarLista();
+  });
+
+  document.getElementById("btnTotal").addEventListener("click", () => {
+    resultado.textContent = "Total de convidados: " + convidados.length;
+  });
+
+  document.getElementById("btnLimpar").addEventListener("click", () => {
+    resultado.innerHTML = "";
+  });
+
 });
