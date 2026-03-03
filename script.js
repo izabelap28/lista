@@ -1,41 +1,64 @@
-document.addEventListener("DOMContentLoaded", () => {
+// 1. Lista Inicial de Convidados
+const convidadosOriginais = [
+    "Ana Maria", "Bernardo", "Alice", "Gustavo", "Arthur", 
+    "Fernanda", "Alberto", "Caio", "Beatriz", "Amélia"
+];
 
-  let convidados = ["Ana","Carlos","Amanda","Bruno","Aline","Fernanda","Rafael","Alex"];
+// Variável que manterá o estado atual da lista exibida
+let convidadosAtuais = [...convidadosOriginais];
 
-  const lista = document.getElementById("lista");
-  const totalCard = document.getElementById("totalCard");
-  const aCard = document.getElementById("aCard");
-  const longosCard = document.getElementById("longosCard");
+const listaUl = document.getElementById('listaExibicao');
+const statsDiv = document.getElementById('stats');
 
-  function atualizarTela(){
-    lista.innerHTML = "";
-
-    convidados.forEach(nome => {
-      let li = document.createElement("li");
-      li.textContent = nome;
-      lista.appendChild(li);
+// Função para renderizar a lista na tela usando Loop
+function renderizar(lista) {
+    listaUl.innerHTML = "";
+    
+    lista.forEach(nome => {
+        const li = document.createElement('li');
+        li.textContent = nome;
+        listaUl.appendChild(li);
     });
 
-    totalCard.textContent = convidados.length;
-    aCard.textContent = convidados.filter(n => n[0].toUpperCase() === "A").length;
-    longosCard.textContent = convidados.filter(n => n.length > 5).length;
-  }
+    atualizarEstatisticas(lista);
+}
 
-  document.getElementById("btnMaiusculo").addEventListener("click", () => {
-    convidados = convidados.map(n => n.toUpperCase());
-    atualizarTela();
-  });
+// Contagem de nomes com "A" e atualização de dados
+function atualizarEstatisticas(lista) {
+    // Conta quantos nomes começam com "A" (Case Insensitive)
+    const totalComA = lista.filter(n => n.toUpperCase().startsWith('A')).length;
+    
+    statsDiv.innerHTML = `
+        <strong>Info:</strong> Começam com 'A': ${totalComA} | 
+        Total: ${lista.length}
+    `;
+}
 
-  document.getElementById("btnOrdenar").addEventListener("click", () => {
-    convidados.sort();
-    atualizarTela();
-  });
+// Funções do Menu
+function transformar(tipo) {
+    if (tipo === 'maiuscula') {
+        convidadosAtuais = convidadosAtuais.map(n => n.toUpperCase());
+    } else {
+        convidadosAtuais = convidadosAtuais.map(n => n.toLowerCase());
+    }
+    renderizar(convidadosAtuais);
+}
 
-  document.getElementById("btnInverter").addEventListener("click", () => {
-    convidados.reverse();
-    atualizarTela();
-  });
+function ordenar() {
+    convidadosAtuais.sort((a, b) => a.localeCompare(b));
+    renderizar(convidadosAtuais);
+}
 
-  atualizarTela();
+function filtrarLongos() {
+    // Cria lista com nomes que possuem mais de 5 letras
+    convidadosAtuais = convidadosAtuais.filter(nome => nome.length > 5);
+    renderizar(convidadosAtuais);
+}
 
-});
+function resetar() {
+    convidadosAtuais = [...convidadosOriginais];
+    renderizar(convidadosAtuais);
+}
+
+// Inicialização
+renderizar(convidadosAtuais);
