@@ -2,33 +2,27 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Lista de Convidados</title>
+  <title>Menu de Organização</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <main class="container">
-  <h1>Lista de Convidados</h1>
+  <h1>Organizar Convidados</h1>
 
-  <div class="stats">
-    <div class="card">
-      <span>Total</span>
-      <h2 id="totalCard">0</h2>
-    </div>
-    <div class="card">
-      <span>Com A</span>
-      <h2 id="aCard">0</h2>
-    </div>
-    <div class="card">
-      <span>+5 Letras</span>
-      <h2 id="longosCard">0</h2>
-    </div>
-  </div>
+  <div class="menu">
+    <select id="opcao">
+      <option value="">Escolha uma opção</option>
+      <option value="maiusculo">Deixar MAIÚSCULO</option>
+      <option value="minusculo">Deixar minúsculo</option>
+      <option value="az">Ordem A-Z</option>
+      <option value="za">Ordem Z-A</option>
+      <option value="letras">Mostrar quantidade de letras</option>
+      <option value="longos">Apenas +5 letras</option>
+      <option value="comA">Apenas com A</option>
+    </select>
 
-  <div class="buttons">
-    <button id="btnMaiusculo">MAIÚSCULO</button>
-    <button id="btnOrdenar">Ordenar</button>
-    <button id="btnInverter">Inverter</button>
+    <button id="executar">Executar</button>
   </div>
 
   <ul id="lista" class="lista"></ul>
