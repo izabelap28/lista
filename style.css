@@ -1,43 +1,78 @@
-body {
-    background-color: #f3e8dc;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Paleta: bege neutro somente */
+:root{
+  --bg: #f5f1e6;       /* fundo da página */
+  --card: #efe6d0;     /* cartão/container */
+  --btn: #d9cdb3;      /* botão normal */
+  --btn-hover: #cbbf9e;/* botão hover */
+  --text: #3e3a36;     /* texto */
+  --muted: #6b635d;    /* texto secundário */
+  --radius: 12px;
 }
 
-.container {
-    background-color: #efe1d1;
-    padding: 30px;
-    border-radius: 20px;
-    width: 420px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
 }
 
-h1 {
-    text-align: center;
-    color: #5c4a3f;
+.container{
+  width:100%;
+  max-width:460px;
+  background:var(--card);
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 8px 20px rgba(60,52,48,0.06);
+  text-align:center;
 }
 
-button {
-    background-color: #d8c3b5;
-    border: none;
-    padding: 12px;
-    border-radius: 15px;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-    font-weight: bold;
-    color: #4b3f36;
+h1{
+  font-size:20px;
+  margin-bottom:18px;
+  color:var(--text);
 }
 
-button:hover {
-    background-color: #cbb3a3;
+.buttons{
+  display:grid;
+  gap:10px;
+  margin-bottom:18px;
 }
 
-.resultado {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #4b3f36;
+button{
+  background:var(--btn);
+  border: none;
+  padding:12px 14px;
+  border-radius:var(--radius);
+  cursor:pointer;
+  font-weight:600;
+  color:var(--text);
+  transition:transform .08s ease, background .12s ease;
+  width:100%;
+  box-shadow: 0 3px 8px rgba(60,52,48,0.04);
+}
+
+button:active{transform:translateY(1px)}
+button:hover{background:var(--btn-hover)}
+
+.resultado{
+  text-align:left;
+  background:transparent;
+  border-radius:10px;
+  padding-top:6px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+  min-height:48px;
+  word-wrap:break-word;
+}
+
+/* responsivo */
+@media (max-width:420px){
+  .container{padding:18px}
+  h1{font-size:18px}
 }
