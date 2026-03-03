@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Lista de Convidados</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lista de Convidados — Bege</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="container">
+  <main class="container">
     <h1>Lista de Convidados</h1>
 
-    <button id="btnMaiusculo">Nomes em Maiúsculo</button>
-    <button id="btnA">Contar nomes com A</button>
-    <button id="btnLongos">Nomes com mais de 5 letras</button>
+    <div class="buttons">
+      <button id="btnMaiusculo" type="button">Nomes em MAIÚSCULO</button>
+      <button id="btnA" type="button">Contar nomes com "A"</button>
+      <button id="btnLongos" type="button">Nomes (mais de 5 letras)</button>
+    </div>
 
-    <div class="resultado" id="resultado"></div>
-</div>
+    <div id="resultado" class="resultado" aria-live="polite"></div>
+  </main>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
