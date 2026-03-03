@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Menu de Organização</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest List - Elegance</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<main class="container">
-  <h1>Organizar Convidados</h1>
+    <div class="card">
+        <header>
+            <h1>Lista de Convidados</h1>
+            <p>Gerenciamento de eventos e filtragem</p>
+        </header>
 
-  <div class="menu">
-    <select id="opcao">
-      <option value="">Escolha uma opção</option>
-      <option value="maiusculo">Deixar MAIÚSCULO</option>
-      <option value="minusculo">Deixar minúsculo</option>
-      <option value="az">Ordem A-Z</option>
-      <option value="za">Ordem Z-A</option>
-      <option value="letras">Mostrar quantidade de letras</option>
-      <option value="longos">Apenas +5 letras</option>
-      <option value="comA">Apenas com A</option>
-    </select>
+        <nav class="menu">
+            <button onclick="transformar('maiuscula')">MAIÚSCULAS</button>
+            <button onclick="transformar('minuscula')">minúsculas</button>
+            <button onclick="ordenar()">Ordem A-Z</button>
+            <button onclick="filtrarLongos()">Nomes > 5 Letras</button>
+            <button onclick="resetar()">Resetar</button>
+        </nav>
 
-    <button id="executar">Executar</button>
-  </div>
+        <section class="stats" id="stats">
+            </section>
 
-  <ul id="lista" class="lista"></ul>
+        <ul id="listaExibicao" class="guest-list">
+            </ul>
+    </div>
 
-</main>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
