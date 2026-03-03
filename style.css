@@ -1,80 +1,61 @@
-:root{
-  --bg:#f4efe6;
-  --card:#e9dfcc;
-  --card2:#efe6d6;
-  --btn:#d8ccb6;
-  --hover:#cbbda5;
-  --text:#3b372f;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-*{margin:0;padding:0;box-sizing:border-box;}
+  let convidados = ["Ana","Carlos","Amanda","Bruno","Aline","Fernanda","Rafael","Alex"];
 
-body{
-  background:var(--bg);
-  font-family:'Segoe UI',sans-serif;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-}
+  const lista = document.getElementById("lista");
+  const select = document.getElementById("opcao");
+  const botao = document.getElementById("executar");
 
-.container{
-  width:520px;
-  background:var(--card);
-  padding:35px;
-  border-radius:25px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.05);
-}
+  function render(listaFinal){
+    lista.innerHTML = "";
+    listaFinal.forEach(nome => {
+      let li = document.createElement("li");
+      li.textContent = nome;
+      lista.appendChild(li);
+    });
+  }
 
-h1{
-  text-align:center;
-  margin-bottom:20px;
-  color:var(--text);
-}
+  botao.addEventListener("click", () => {
 
-.menu{
-  display:flex;
-  gap:10px;
-  margin-bottom:20px;
-}
+    let opcao = select.value;
+    let copia = [...convidados];
 
-select{
-  flex:1;
-  padding:12px;
-  border-radius:15px;
-  border:none;
-  background:var(--card2);
-  color:var(--text);
-}
+    switch(opcao){
 
-button{
-  background:var(--btn);
-  border:none;
-  padding:12px 18px;
-  border-radius:15px;
-  font-weight:600;
-  cursor:pointer;
-  color:var(--text);
-  transition:0.2s;
-}
+      case "maiusculo":
+        render(copia.map(n => n.toUpperCase()));
+        break;
 
-button:hover{
-  background:var(--hover);
-  transform:scale(1.05);
-}
+      case "minusculo":
+        render(copia.map(n => n.toLowerCase()));
+        break;
 
-.lista{
-  list-style:none;
-}
+      case "az":
+        render(copia.sort());
+        break;
 
-.lista li{
-  background:var(--card2);
-  padding:10px;
-  margin-bottom:8px;
-  border-radius:12px;
-  transition:0.2s;
-}
+      case "za":
+        render(copia.sort().reverse());
+        break;
 
-.lista li:hover{
-  transform:translateX(5px);
-}
+      case "letras":
+        render(copia.map(n => n + " (" + n.length + " letras)"));
+        break;
+
+      case "longos":
+        render(copia.filter(n => n.length > 5));
+        break;
+
+      case "comA":
+        render(copia.filter(n => n[0].toUpperCase() === "A"));
+        break;
+
+      default:
+        render(copia);
+    }
+
+  });
+
+  render(convidados);
+
+});
